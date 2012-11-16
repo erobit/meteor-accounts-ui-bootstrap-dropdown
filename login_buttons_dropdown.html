@@ -27,14 +27,10 @@
 </template>
 
 <template name="_loginButtonsLoggedInDropdownActions">
+  <button class="btn btn-block btn-primary" id="login-buttons-logout">Sign out</button>
   {{#if allowChangingPassword}}
-    <div class="btn" id="login-buttons-open-change-password">
-      Change password
-    </div>
+    <button class="btn btn-block" id="login-buttons-open-change-password">Change password</button>
   {{/if}}
-  <div class="btn" id="login-buttons-logout">
-    Sign out
-  </div>
 </template>
 
 <!--            -->
@@ -139,4 +135,5 @@
   <div class="btn btn-primary" id="login-buttons-do-change-password">
     Change password
   </div>
+  <button class="btn login-close">Close</button>
 </template>

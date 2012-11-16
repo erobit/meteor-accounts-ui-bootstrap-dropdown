@@ -13,7 +13,7 @@
       loginButtonsSession.set('dropdownVisible', true);
       Meteor.flush();
     },
-    'click .login-close-text': function () {
+    'click .login-close': function () {
       loginButtonsSession.closeDropdown();
     }
   });
@@ -24,7 +24,7 @@
   //
 
   Template._loginButtonsLoggedInDropdown.events({
-    'click #login-buttons-open-change-password': function() {
+    'click #login-buttons-open-change-password': function(event) {
       loginButtonsSession.resetMessages();
       loginButtonsSession.set('inChangePasswordFlow', true);
     }
@@ -106,9 +106,7 @@
         document.getElementById('login-email').value = usernameOrEmail;
     },
     'click #forgot-password-link': function (event) {
-
       event.stopPropagation();
-
       loginButtonsSession.resetMessages();
 
       // store values of fields before swtiching to the signup form
@@ -286,6 +284,9 @@
     },
     'click #login-buttons-do-change-password': function () {
       changePassword();
+    },
+    'click' : function() {
+
     }
   });
 
