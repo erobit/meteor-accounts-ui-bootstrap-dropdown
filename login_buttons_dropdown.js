@@ -25,8 +25,11 @@
 
   Template._loginButtonsLoggedInDropdown.events({
     'click #login-buttons-open-change-password': function(event) {
+      event.stopPropagation();
       loginButtonsSession.resetMessages();
       loginButtonsSession.set('inChangePasswordFlow', true);
+      Meteor.flush();
+      toggleDropdown();
     }
   });
 
@@ -282,11 +285,9 @@
       if (event.keyCode === 13)
         changePassword();
     },
-    'click #login-buttons-do-change-password': function () {
+    'click #login-buttons-do-change-password': function (event) {
+      event.stopPropagation();
       changePassword();
-    },
-    'click' : function() {
-
     }
   });
 
@@ -459,9 +460,12 @@
       if (error) {
         loginButtonsSession.set('errorMessage', error.reason || "Unknown error");
       } else {
-        loginButtonsSession.set('inChangePasswordFlow', false);
-        loginButtonsSession.set('inMessageOnlyFlow', true);
         loginButtonsSession.set('infoMessage', "Password changed");
+
+        // wait 3 seconds, then expire the msg
+        Meteor.setTimeout(function() {
+          loginButtonsSession.resetMessages();
+        }, 3000);
       }
     });
   };
