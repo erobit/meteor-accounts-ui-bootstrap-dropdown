@@ -95,7 +95,6 @@
       
       // force the ui to update so that we have the approprate fields to fill in
       Meteor.flush();
-      toggleDropdown();
 
       // update new fields with appropriate defaults
       if (username !== null)
@@ -121,7 +120,7 @@
       
       // force the ui to update so that we have the approprate fields to fill in
       Meteor.flush();
-      toggleDropdown();
+      //toggleDropdown();
 
       // update new fields with appropriate defaults
       if (email !== null)
@@ -139,6 +138,7 @@
 
       loginButtonsSession.set('inSignupFlow', false);
       loginButtonsSession.set('inForgotPasswordFlow', false);
+
       // force the ui to update so that we have the approprate fields to fill in
       Meteor.flush();
 

@@ -109,9 +109,7 @@
       <input id="forgot-password-email" type="email"/>
     </div>
     {{> _loginButtonsMessages}}
-    <div class="btn login-button-form-submit" id="login-buttons-forgot-password">
-      Reset password
-    </div>
+    <button class="btn btn-primary login-button-form-submit" id="login-buttons-forgot-password">Reset password</button>
     {{> _loginButtonsBackToLoginLink}}
   </div>
 </template>
@@ -132,8 +130,6 @@
     {{> _loginButtonsFormField}}
   {{/each}}
   {{> _loginButtonsMessages}}
-  <div class="btn btn-primary" id="login-buttons-do-change-password">
-    Change password
-  </div>
+  <button class="btn btn-primary" id="login-buttons-do-change-password">Change password</button>
   <button class="btn login-close">Close</button>
 </template>
