@@ -2,7 +2,6 @@
 <!-- LOGGED IN -->
 <!--           -->
 <template name="_loginButtonsLoggedInDropdown">
-  {{#if currentUserLoaded}}
   <div class="nav-collapse">
     <ul class="nav pull-right">
       <li id="login-dropdown-list" class="dropdown">
@@ -21,9 +20,6 @@
       </li>
     </ul>
   </div>
-  {{else}}
-    <div class="loading">&nbsp;</div>
-  {{/if}}
 </template>
 
 <template name="_loginButtonsLoggedInDropdownActions">
