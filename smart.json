@@ -1,0 +1,8 @@
+{
+  "name": "accounts-ui-bootstrap-dropdown",
+  "description": "Meteor's accounts templates styled for bootstrap dropdown menu",
+  "homepage": "https://github.com/erobit/meteor-accounts-ui-bootstrap-dropdown",
+  "author": "Eric Robitaille <eric@vianet.ca>",
+  "version": "0.1.0",
+  "git": "https://github.com/erobit/meteor-accounts-ui-bootstrap-dropdown.git",
+}
