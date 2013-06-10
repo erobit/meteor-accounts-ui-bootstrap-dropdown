@@ -20,3 +20,4 @@ How to use
 -------------
 
 Add {{ loginButtons }} to your template
+
