@@ -435,7 +435,7 @@
         if (error)
           loginButtonsSession.errorMessage(error.reason || "Unknown error");
         else
-          loginButtonsSession.set('infoMessage', "Email sent");
+          loginButtonsSession.infoMessage("Email sent");
       });
     } else {
       loginButtonsSession.infoMessage("Email sent");
