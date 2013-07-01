@@ -434,11 +434,14 @@
       Accounts.forgotPassword({email: email}, function (error) {
         if (error)
           loginButtonsSession.errorMessage(error.reason || "Unknown error");
+          //loginButtonsSession.set('errorMessage', (error.reason || "Unknown error"));
         else
-          loginButtonsSession.set('infoMessage', "Email sent");
+          //loginButtonsSession.set('infoMessage', "Email sent");
+          loginButtonsSession.infoMessage("Email sent");
       });
     } else {
       loginButtonsSession.infoMessage("Email sent");
+      //loginButtonsSession.set('infoMessage', "Email sent");
     }
   };
 
