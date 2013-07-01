@@ -10,18 +10,16 @@
 
 <template name="_resetPasswordDialog">
   {{#if inResetPasswordFlow}}
-    <div class="hide-background"></div>
-
-    <div class="accounts-dialog accounts-centered-dialog">
-      <label id="reset-password-new-password-label" for="reset-password-new-password">
-        New password
-      </label>
-      <input id="reset-password-new-password" type="password" />
-      {{> _loginButtonsMessages}}
-      <div class="login-button login-button-form-submit" id="login-buttons-reset-password-button">
-        Set password
+    <div class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="reset-password-modal" id="reset-password-modal" aria-hidden="false">
+      <div class="modal-body">
+        <button type="button" class="close" id="login-buttons-cancel-reset-password" data-dismiss="modal" aria-hidden="true">×</button>
+        <label id="reset-password-new-password-label" for="reset-password-new-password">New password</label>
+        <input id="reset-password-new-password" type="password" />
+        {{> _loginButtonsMessages}}
+        <div>
+          <button class="btn btn-primary login-button login-button-form-submit" id="login-buttons-reset-password-button" aria-hidden="true">Set password</button>
+        </div>
       </div>
-      <a class="accounts-close" id="login-buttons-cancel-reset-password">&times;</a>
     </div>
   {{/if}}
 </template>

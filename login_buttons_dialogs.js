@@ -39,7 +39,10 @@
 
   Template._resetPasswordDialog.events({
     'click #login-buttons-reset-password-button': function () {
-      resetPassword();
+      resetPassword(function(error) {
+        if (!error)
+          $("#reset-password-modal").modal("hide");
+      });
     },
     'keypress #reset-password-new-password': function (event) {
       if (event.keyCode === 13)
@@ -51,26 +54,36 @@
     }
   });
 
-  var resetPassword = function () {
+  var resetPassword = function (callback) {
+    if (!callback) { callback = function() {} }
+
     loginButtonsSession.resetMessages();
     var newPassword = document.getElementById('reset-password-new-password').value;
-    if (!Accounts._loginButtons.validatePassword(newPassword))
+    if (!Accounts._loginButtons.validatePassword(newPassword)) {
+      callback(Session.get("Meteor.loginButtons.errorMessage"));
       return;
+    }
 
     Accounts.resetPassword(
       loginButtonsSession.get('resetPasswordToken'), newPassword,
       function (error) {
         if (error) {
           loginButtonsSession.errorMessage(error.reason || "Unknown error");
+          callback(error.reason || "Unknown error");
         } else {
           loginButtonsSession.set('resetPasswordToken', null);
           Accounts._enableAutoLogin();
+          callback();
         }
       });
   };
 
   Template._resetPasswordDialog.inResetPasswordFlow = function () {
     return loginButtonsSession.get('resetPasswordToken');
+  };
+
+  Template._resetPasswordDialog.rendered = function () {
+    $("#reset-password-modal").modal("show");
   };
 
 
