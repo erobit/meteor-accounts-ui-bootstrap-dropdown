@@ -1,102 +1,101 @@
-(function () {
-  var VALID_KEYS = [
-    'dropdownVisible',
 
-    // XXX consider replacing these with one key that has an enum for values.
-    'inSignupFlow',
-    'inForgotPasswordFlow',
-    'inChangePasswordFlow',
-    'inMessageOnlyFlow',
+var VALID_KEYS = [
+  'dropdownVisible',
 
-    'errorMessage',
-    'infoMessage',
+  // XXX consider replacing these with one key that has an enum for values.
+  'inSignupFlow',
+  'inForgotPasswordFlow',
+  'inChangePasswordFlow',
+  'inMessageOnlyFlow',
 
-    // dialogs with messages (info and error)
-    'resetPasswordToken',
-    'enrollAccountToken',
-    'justVerifiedEmail',
+  'errorMessage',
+  'infoMessage',
 
-    'configureLoginServiceDialogVisible',
-    'configureLoginServiceDialogServiceName',
-    'configureLoginServiceDialogSaveDisabled'
-  ];
+  // dialogs with messages (info and error)
+  'resetPasswordToken',
+  'enrollAccountToken',
+  'justVerifiedEmail',
 
-  var validateKey = function (key) {
-    if (!_.contains(VALID_KEYS, key))
-      throw new Error("Invalid key in loginButtonsSession: " + key);
-  };
+  'configureLoginServiceDialogVisible',
+  'configureLoginServiceDialogServiceName',
+  'configureLoginServiceDialogSaveDisabled'
+];
 
-  var KEY_PREFIX = "Meteor.loginButtons.";
+var validateKey = function (key) {
+  if (!_.contains(VALID_KEYS, key))
+    throw new Error("Invalid key in loginButtonsSession: " + key);
+};
 
-  // XXX we should have a better pattern for code private to a package like this one
-  Accounts._loginButtonsSession = {
-    set: function(key, value) {
-      validateKey(key);
-      if (_.contains(['errorMessage', 'infoMessage'], key))
-        throw new Error("Don't set errorMessage or infoMessage directly. Instead, use errorMessage() or infoMessage().");
+var KEY_PREFIX = "Meteor.loginButtons.";
 
-      this._set(key, value);
-    },
+// XXX we should have a better pattern for code private to a package like this one
+Accounts._loginButtonsSession = {
+  set: function(key, value) {
+    validateKey(key);
+    if (_.contains(['errorMessage', 'infoMessage'], key))
+      throw new Error("Don't set errorMessage or infoMessage directly. Instead, use errorMessage() or infoMessage().");
 
-    _set: function(key, value) {
-      Session.set(KEY_PREFIX + key, value);
-    },
+    this._set(key, value);
+  },
 
-    get: function(key) {
-      validateKey(key);
-      return Session.get(KEY_PREFIX + key);
-    },
+  _set: function(key, value) {
+    Session.set(KEY_PREFIX + key, value);
+  },
 
-    closeDropdown: function () {
-      this.set('inSignupFlow', false);
-      this.set('inForgotPasswordFlow', false);
-      this.set('inChangePasswordFlow', false);
-      this.set('inMessageOnlyFlow', false);
-      this.set('dropdownVisible', false);
-      this.resetMessages();
-    },
+  get: function(key) {
+    validateKey(key);
+    return Session.get(KEY_PREFIX + key);
+  },
 
-    infoMessage: function(message) {
-      this._set("errorMessage", null);
-      this._set("infoMessage", message);
-      this.ensureMessageVisible();
-    },
+  closeDropdown: function () {
+    this.set('inSignupFlow', false);
+    this.set('inForgotPasswordFlow', false);
+    this.set('inChangePasswordFlow', false);
+    this.set('inMessageOnlyFlow', false);
+    this.set('dropdownVisible', false);
+    this.resetMessages();
+  },
 
-    errorMessage: function(message) {
-      this._set("errorMessage", message);
-      this._set("infoMessage", null);
-      this.ensureMessageVisible();
-    },
+  infoMessage: function(message) {
+    this._set("errorMessage", null);
+    this._set("infoMessage", message);
+    this.ensureMessageVisible();
+  },
 
-    // is there a visible dialog that shows messages (info and error)
-    isMessageDialogVisible: function () {
-      return this.get('resetPasswordToken') ||
-        this.get('enrollAccountToken') ||
-        this.get('justVerifiedEmail');
-    },
+  errorMessage: function(message) {
+    this._set("errorMessage", message);
+    this._set("infoMessage", null);
+    this.ensureMessageVisible();
+  },
 
-    // ensure that somethings displaying a message (info or error) is
-    // visible.  if a dialog with messages is open, do nothing;
-    // otherwise open the dropdown.
-    //
-    // notably this doesn't matter when only displaying a single login
-    // button since then we have an explicit message dialog
-    // (_loginButtonsMessageDialog), and dropdownVisible is ignored in
-    // this case.
-    ensureMessageVisible: function () {
-      if (!this.isMessageDialogVisible())
-        this.set("dropdownVisible", true);
-    },
+  // is there a visible dialog that shows messages (info and error)
+  isMessageDialogVisible: function () {
+    return this.get('resetPasswordToken') ||
+      this.get('enrollAccountToken') ||
+      this.get('justVerifiedEmail');
+  },
 
-    resetMessages: function () {
-      this._set("errorMessage", null);
-      this._set("infoMessage", null);
-    },
+  // ensure that somethings displaying a message (info or error) is
+  // visible.  if a dialog with messages is open, do nothing;
+  // otherwise open the dropdown.
+  //
+  // notably this doesn't matter when only displaying a single login
+  // button since then we have an explicit message dialog
+  // (_loginButtonsMessageDialog), and dropdownVisible is ignored in
+  // this case.
+  ensureMessageVisible: function () {
+    if (!this.isMessageDialogVisible())
+      this.set("dropdownVisible", true);
+  },
 
-    configureService: function (name) {
-      this.set('configureLoginServiceDialogVisible', true);
-      this.set('configureLoginServiceDialogServiceName', name);
-      this.set('configureLoginServiceDialogSaveDisabled', true);
-    }
-  };
-}) ();
+  resetMessages: function () {
+    this._set("errorMessage", null);
+    this._set("infoMessage", null);
+  },
+
+  configureService: function (name) {
+    this.set('configureLoginServiceDialogVisible', true);
+    this.set('configureLoginServiceDialogServiceName', name);
+    this.set('configureLoginServiceDialogSaveDisabled', true);
+  }
+};
