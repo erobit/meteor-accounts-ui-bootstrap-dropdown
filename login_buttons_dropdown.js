@@ -48,6 +48,14 @@ Template._loginButtonsLoggedInDropdown.dropdownVisible = function () {
   return loginButtonsSession.get('dropdownVisible');
 };
 
+// Gets the first (or any) of the user's login providers. Usually there should
+// just be one, right?
+Template._loginButtonsLoggedInDropdown.serviceName = function() {
+  for (var serviceName in  Meteor.user().services) {
+    return serviceName;
+  }
+};
+
 Template._loginButtonsLoggedInDropdownActions.allowChangingPassword = function () {
   // it would be more correct to check whether the user has a password set,
   // but in order to do that we'd have to send more data down to the client,
@@ -91,7 +99,7 @@ Template._loginButtonsLoggedOutDropdown.events({
 
     loginButtonsSession.set('inSignupFlow', true);
     loginButtonsSession.set('inForgotPasswordFlow', false);
-    
+
     // force the ui to update so that we have the approprate fields to fill in
     Deps.flush();
 
@@ -116,7 +124,7 @@ Template._loginButtonsLoggedOutDropdown.events({
 
     loginButtonsSession.set('inSignupFlow', false);
     loginButtonsSession.set('inForgotPasswordFlow', true);
-    
+
     // force the ui to update so that we have the approprate fields to fill in
     Deps.flush();
     //toggleDropdown();
@@ -316,7 +324,6 @@ Template._loginButtonsChangePassword.fields = function () {
      }}
   ];
 };
-
 
 //
 // helpers
