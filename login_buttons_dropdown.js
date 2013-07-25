@@ -51,8 +51,11 @@ Template._loginButtonsLoggedInDropdown.dropdownVisible = function () {
 // Gets the first (or any) of the user's login providers. Usually there should
 // just be one, right?
 Template._loginButtonsLoggedInDropdown.serviceName = function() {
-  for (var serviceName in  Meteor.user().services) {
-    return serviceName;
+  var user = Meteor.user();
+  if (user.services) {
+    for (var serviceName in user.services) {
+      return serviceName;
+    }
   }
 };
 
