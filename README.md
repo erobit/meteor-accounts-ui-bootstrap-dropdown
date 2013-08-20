@@ -15,7 +15,9 @@ How to add to your meteor app
 -----------------------------
 
 mrt add accounts-ui-bootstrap-dropdown
+
 meteor add bootstrap
+
 meteor add accounts-password
 
 How to use
