@@ -3,7 +3,9 @@ Package.describe({
 });
 
 Package.on_use(function (api) {
-  api.use(['accounts-base', 'underscore', 'templating', 'bootstrap', 'jquery', 'handlebars'], 'client');
+  api.use(['deps', 'service-configuration', 'accounts-base',
+         'underscore', 'templating',
+         'handlebars', 'spark', 'session'], 'client');
 
   // Export Accounts (etc) to packages using this one.
   api.imply('accounts-base', ['client', 'server']);
@@ -14,7 +16,6 @@ Package.on_use(function (api) {
   // Allow us to directly test if accounts-password (which doesn't use
   // Accounts.oauth.registerService) exists.
   api.use('accounts-password', {weak: true});
-
 
   api.add_files([
     'accounts_ui.js',
