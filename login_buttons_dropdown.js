@@ -203,7 +203,7 @@ Template._loginButtonsLoggedOutPasswordService.fields = function () {
      visible: function () {
        return passwordSignupFields() === "EMAIL_ONLY";
      }},
-    {fieldName: 'password', fieldLabel: 'Password', inputType: 'password',
+    {fieldName: 'password', fieldLabel: 'Heslo', inputType: 'password',
      visible: function () {
        return true;
      }}
@@ -226,11 +226,11 @@ Template._loginButtonsLoggedOutPasswordService.fields = function () {
      visible: function () {
        return passwordSignupFields() === "USERNAME_AND_OPTIONAL_EMAIL";
      }},
-    {fieldName: 'password', fieldLabel: 'Password', inputType: 'password',
+    {fieldName: 'password', fieldLabel: 'Heslo', inputType: 'password',
      visible: function () {
        return true;
      }},
-    {fieldName: 'password-again', fieldLabel: 'Password (again)',
+    {fieldName: 'password-again', fieldLabel: 'Heslo (znovu)',
      inputType: 'password',
      visible: function () {
        // No need to make users double-enter their password if
@@ -289,15 +289,15 @@ Template._loginButtonsChangePassword.events({
 
 Template._loginButtonsChangePassword.fields = function () {
   return [
-    {fieldName: 'old-password', fieldLabel: 'Current Password', inputType: 'password',
+    {fieldName: 'old-password', fieldLabel: 'Stávající heslo', inputType: 'password',
      visible: function () {
        return true;
      }},
-    {fieldName: 'password', fieldLabel: 'New Password', inputType: 'password',
+    {fieldName: 'password', fieldLabel: 'Nové heslo', inputType: 'password',
      visible: function () {
        return true;
      }},
-    {fieldName: 'password-again', fieldLabel: 'New Password (again)',
+    {fieldName: 'password-again', fieldLabel: 'Nové heslo (znovu)',
      inputType: 'password',
      visible: function () {
        // No need to make users double-enter their password if
@@ -354,7 +354,7 @@ var login = function () {
     else
       loginSelector = {username: username};
   } else if (email !== null) {
-    if (!Accounts._loginButtons.validateEmail(email))
+    if (!validateEmail(email))
       return;
     else
       loginSelector = {email: email};
@@ -431,10 +431,10 @@ var forgotPassword = function () {
       if (error)
         loginButtonsSession.errorMessage(error.reason || "Unknown error");
       else
-        loginButtonsSession.infoMessage("Email sent");
+        loginButtonsSession.infoMessage("Email poslán");
     });
   } else {
-    loginButtonsSession.infoMessage("Email sent");
+    loginButtonsSession.infoMessage("Email poslán");
   }
 };
 
