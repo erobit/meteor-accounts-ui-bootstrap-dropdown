@@ -431,10 +431,10 @@ var forgotPassword = function () {
       if (error)
         loginButtonsSession.errorMessage(error.reason || "Unknown error");
       else
-        loginButtonsSession.infoMessage("Email sent");
+        loginButtonsSession.infoMessage("Email poslán");
     });
   } else {
-    loginButtonsSession.infoMessage("Email sent");
+    loginButtonsSession.infoMessage("Email poslán");
   }
 };
 
