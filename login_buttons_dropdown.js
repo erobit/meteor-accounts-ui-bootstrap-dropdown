@@ -289,15 +289,15 @@ Template._loginButtonsChangePassword.events({
 
 Template._loginButtonsChangePassword.fields = function () {
   return [
-    {fieldName: 'old-password', fieldLabel: 'Current Password', inputType: 'password',
+    {fieldName: 'old-password', fieldLabel: 'Stávající heslo', inputType: 'password',
      visible: function () {
        return true;
      }},
-    {fieldName: 'password', fieldLabel: 'New Password', inputType: 'password',
+    {fieldName: 'password', fieldLabel: 'Nové heslo', inputType: 'password',
      visible: function () {
        return true;
      }},
-    {fieldName: 'password-again', fieldLabel: 'New Password (again)',
+    {fieldName: 'password-again', fieldLabel: 'Nové heslo (znovu)',
      inputType: 'password',
      visible: function () {
        // No need to make users double-enter their password if
