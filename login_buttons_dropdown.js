@@ -354,7 +354,7 @@ var login = function () {
     else
       loginSelector = {username: username};
   } else if (email !== null) {
-    if (!Accounts._loginButtons.validateEmail(email))
+    if (!validateEmail(email))
       return;
     else
       loginSelector = {email: email};
