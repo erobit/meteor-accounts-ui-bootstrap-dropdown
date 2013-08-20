@@ -203,7 +203,7 @@ Template._loginButtonsLoggedOutPasswordService.fields = function () {
      visible: function () {
        return passwordSignupFields() === "EMAIL_ONLY";
      }},
-    {fieldName: 'password', fieldLabel: 'Password', inputType: 'password',
+    {fieldName: 'password', fieldLabel: 'Heslo', inputType: 'password',
      visible: function () {
        return true;
      }}
@@ -226,11 +226,11 @@ Template._loginButtonsLoggedOutPasswordService.fields = function () {
      visible: function () {
        return passwordSignupFields() === "USERNAME_AND_OPTIONAL_EMAIL";
      }},
-    {fieldName: 'password', fieldLabel: 'Password', inputType: 'password',
+    {fieldName: 'password', fieldLabel: 'Heslo', inputType: 'password',
      visible: function () {
        return true;
      }},
-    {fieldName: 'password-again', fieldLabel: 'Password (again)',
+    {fieldName: 'password-again', fieldLabel: 'Heslo (znovu)',
      inputType: 'password',
      visible: function () {
        // No need to make users double-enter their password if
