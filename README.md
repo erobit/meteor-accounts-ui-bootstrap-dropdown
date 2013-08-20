@@ -15,9 +15,16 @@ How to add to your meteor app
 -----------------------------
 
 mrt add accounts-ui-bootstrap-dropdown
+meteor add bootstrap
+meteor add accounts-password
 
 How to use
 -------------
 
 Add {{ loginButtons }} to your template
 
+Add Accounts configuration to your javascript file
+
+Accounts.ui.config({
+	passwordSignupFields: 'USERNAME_AND_OPTIONAL_EMAIL'
+});
