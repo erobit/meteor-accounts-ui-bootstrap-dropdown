@@ -3,7 +3,7 @@ Package.describe({
 });
 
 Package.on_use(function (api) {
-  api.use(['accounts-urls', 'accounts-base', 'underscore', 'templating', 'bootstrap', 'jquery'], 'client');
+  api.use(['accounts-urls', 'accounts-base', 'underscore', 'templating', 'jquery'], 'client');
 
   api.add_files([
     'accounts_ui.js',
