@@ -1,8 +1,8 @@
 {
-  "name": "accounts-ui-bootstrap-dropdown",
-  "description": "Meteor's accounts templates styled for bootstrap dropdown menu",
-  "homepage": "https://github.com/erobit/meteor-accounts-ui-bootstrap-dropdown",
-  "author": "Eric Robitaille <eric@vianet.ca>",
-  "version": "0.6.5.1",
-  "git": "https://github.com/erobit/meteor-accounts-ui-bootstrap-dropdown.git"
+  "name": "accounts-ui-bootstrap-turkish",
+  "description": "Meteor's accounts templates styled for bootstrap dropdown menu - in Turkish",
+  "homepage": "https://github.com/aykutyaman/meteor-accounts-ui-bootstrap-turkish",
+  "author": "Aykut Yaman <yaman.ayk@gmail.com>",
+  "version": "0.1.0",
+  "git": "https://github.com/aykutyaman/meteor-accounts-ui-bootstrap-turkish.git"
 }
