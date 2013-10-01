@@ -6,7 +6,7 @@
     <ul class="nav pull-right">
       <li id="login-dropdown-list">
         <a class="dropdown-toggle" href="#" data-toggle="dropdown">{{displayName}}<strong class="caret"></strong></a>
-        <div class="dropdown-menu" style="padding: 20px; padding-bottom: 20px;">   
+        <div class="dropdown-menu" style="padding: 20px; padding-bottom: 20px;">
           {{#if inMessageOnlyFlow}}
             {{> _loginButtonsMessages}}
           {{else}}
@@ -23,9 +23,9 @@
 </template>
 
 <template name="_loginButtonsLoggedInDropdownActions">
-  <button class="btn btn-block btn-primary" id="login-buttons-logout">Sign out</button>
+  <button class="btn btn-block btn-primary" id="login-buttons-logout">Çıkış</button>
   {{#if allowChangingPassword}}
-    <button class="btn btn-block" id="login-buttons-open-change-password">Change password</button>
+    <button class="btn btn-block" id="login-buttons-open-change-password">Şifre Değiştir</button>
   {{/if}}
 </template>
 
@@ -36,8 +36,8 @@
   <div class="nav-collapse collapse">
     <ul class="nav pull-right">
       <li id="login-dropdown-list" class="dropdown">
-        <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In / Up <strong class="caret"></strong></a>
-        <div class="dropdown-menu" style="padding: 20px; padding-bottom: 20px;">   
+        <a class="dropdown-toggle" href="#" data-toggle="dropdown">Giriş <strong class="caret"></strong></a>
+        <div class="dropdown-menu" style="padding: 20px; padding-bottom: 20px;">
           {{> _loginButtonsLoggedOutAllServices}}
         </div>
       </li>
@@ -79,18 +79,18 @@
     {{> _loginButtonsMessages}}
     <button class="btn btn-primary" id="login-buttons-password" type="button">
       {{#if inSignupFlow}}
-        Create
+        Yarat
       {{else}}
-        Sign in
+        Giriş
       {{/if}}
     </button>
     {{#if inLoginFlow}}
       {{#if showCreateAccountLink}}
-        <button id="signup-link" class="btn" type="button">Create account</button>
+        <button id="signup-link" class="btn" type="button">Hesap Yarat</button>
       {{/if}}
       {{#if showForgotPasswordLink}}
       <div>
-        <a id="forgot-password-link">Forgot password</a>
+        <a id="forgot-password-link">Şifremi Unuttum</a>
       </div>
       {{/if}}
     {{/if}}
@@ -107,13 +107,13 @@
       <input id="forgot-password-email" type="email"/>
     </div>
     {{> _loginButtonsMessages}}
-    <button class="btn btn-primary login-button-form-submit" id="login-buttons-forgot-password">Reset password</button>
+    <button class="btn btn-primary login-button-form-submit" id="login-buttons-forgot-password">Şifreyi Değiştir</button>
     {{> _loginButtonsBackToLoginLink}}
   </div>
 </template>
 
 <template name="_loginButtonsBackToLoginLink">
-    <button id="back-to-login-link" class="btn">Cancel</button>
+    <button id="back-to-login-link" class="btn">İptal</button>
 </template>
 
 <!--
@@ -148,7 +148,7 @@ https://gist.github.com/968927
   {{/each}}
   {{> _loginButtonsMessages}}
   <div>
-    <button class="btn btn-primary" id="login-buttons-do-change-password">Change password</button>
-    <button class="btn login-close">Close</button>
+    <button class="btn btn-primary" id="login-buttons-do-change-password">Şifreyi Değiştir</button>
+    <button class="btn login-close">Kapat</button>
   </div>
 </template>
