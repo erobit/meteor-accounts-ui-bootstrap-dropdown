@@ -14,6 +14,10 @@ Template._loginButtons.events({
   },
   'click .login-close': function () {
     loginButtonsSession.closeDropdown();
+  },
+  'click #login-buttons .dropdown-toggle': function() {
+    // focus on first input from dropdown
+    setTimeout("$('#login-buttons').find('input[id^=login-]:first').focus()", 100);
   }
 });
 
