@@ -19,9 +19,11 @@ Template._loginButtons.events({
   }
 });
 
-Template._loginButtons.preserve({
-  'input[id]': Spark._labelFromIdOrName
-});
+if (Package.spark) {
+  Template._loginButtons.preserve({
+    'input[id]': Spark._labelFromIdOrName
+  });
+}
 
 //
 // helpers

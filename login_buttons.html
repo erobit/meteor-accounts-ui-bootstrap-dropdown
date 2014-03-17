@@ -4,6 +4,10 @@
     try {{loginButtons align="right"}}
   -->
 
+<template name="loginButtons">
+  {{> _loginButtons}}
+</template>
+
 <template name="_loginButtons">
   <div id="login-buttons" class="login-buttons-dropdown-align-{{align}}">
     {{#if currentUser}}
@@ -86,6 +90,6 @@
     </div>
   {{else}}
     {{! just add some padding }}
-    <div class="login-buttons-padding" />
+    <div class="login-buttons-padding" ></div>
   {{/unless}}
 </template>
