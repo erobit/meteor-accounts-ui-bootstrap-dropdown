@@ -1,15 +1,6 @@
 // for convenience
 var loginButtonsSession = Accounts._loginButtonsSession;
 
-Handlebars.registerHelper(
-  "loginButtons",
-  function (options) {
-    if (options.hash.align === "right")
-      return new Handlebars.SafeString(Template._loginButtons({align: "right"}));
-    else
-      return new Handlebars.SafeString(Template._loginButtons({align: "left"}));
-  });
-
 // shared between dropdown and single mode
 Template._loginButtons.events({
   'click #login-buttons-logout': function() {
@@ -19,11 +10,9 @@ Template._loginButtons.events({
   }
 });
 
-if (Package.spark) {
-  Template._loginButtons.preserve({
-    'input[id]': Spark._labelFromIdOrName
-  });
-}
+UI.registerHelper('loginButtons', function () {
+  throw new Error("Use {{> loginButtons}} instead of {{loginButtons}}");
+});
 
 //
 // helpers
@@ -46,7 +35,7 @@ displayName = function () {
 
 // returns an array of the login services used by this app. each
 // element of the array is an object (eg {name: 'facebook'}), since
-// that makes it useful in combination with handlebars {{#each}}.
+// that makes it useful in combination with UI {{#each}}.
 //
 // don't cache the output of this function: if called during startup (before
 // oauth packages load) it might not include them all.

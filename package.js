@@ -4,10 +4,7 @@ Package.describe({
 
 Package.on_use(function (api) {
   api.use(['deps', 'service-configuration', 'accounts-base',
-         'underscore', 'templating',
-         'handlebars', 'session'], 'client');
-
-  api.use('spark', {weak: true});
+         'underscore', 'templating', 'session'], 'client');
 
   // Export Accounts (etc) to packages using this one.
   api.imply('accounts-base', ['client', 'server']);
