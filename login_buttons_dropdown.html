@@ -5,8 +5,8 @@
   <div class="dropdown">
     <ul class="nav pull-right">
       <li id="login-dropdown-list">
-        <a class="dropdown-toggle" href="#" data-toggle="dropdown">{{displayName}}<strong class="caret"></strong></a>
-        <div class="dropdown-menu" style="padding: 20px; padding-bottom: 20px;">   
+        <a id="login-buttons-image-{{serviceName}}" class="login-image-at-name dropdown-toggle" href="#" data-toggle="dropdown">{{displayName}}<strong class="caret"></strong></a>
+        <div class="dropdown-menu" style="padding: 20px; padding-bottom: 20px;">
           {{#if inMessageOnlyFlow}}
             {{> _loginButtonsMessages}}
           {{else}}
@@ -37,7 +37,7 @@
     <ul class="nav pull-right">
       <li id="login-dropdown-list" class="dropdown">
         <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In / Up <strong class="caret"></strong></a>
-        <div class="dropdown-menu" style="padding: 20px; padding-bottom: 20px;">   
+        <div class="dropdown-menu" style="padding: 20px; padding-bottom: 20px;">
           {{> _loginButtonsLoggedOutAllServices}}
         </div>
       </li>
