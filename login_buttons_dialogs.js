@@ -68,9 +68,11 @@ var resetPassword = function () {
     });
 };
 
-Template._resetPasswordDialog.inResetPasswordFlow = function () {
-  return loginButtonsSession.get('resetPasswordToken');
-};
+Template._resetPasswordDialog.helpers({
+  inResetPasswordFlow: function () {
+    return loginButtonsSession.get('resetPasswordToken');
+  }
+});
 
 
 //
@@ -109,9 +111,11 @@ var enrollAccount = function () {
     });
 };
 
-Template._enrollAccountDialog.inEnrollAccountFlow = function () {
-  return loginButtonsSession.get('enrollAccountToken');
-};
+Template._enrollAccountDialog.helpers({
+  inEnrollAccountFlow: function () {
+    return loginButtonsSession.get('enrollAccountToken');
+  }
+});
 
 
 //
@@ -124,9 +128,11 @@ Template._justVerifiedEmailDialog.events({
   }
 });
 
-Template._justVerifiedEmailDialog.visible = function () {
-  return loginButtonsSession.get('justVerifiedEmail');
-};
+Template._justVerifiedEmailDialog.helpers({
+  visible: function () {
+    return loginButtonsSession.get('justVerifiedEmail');
+  }
+});
 
 
 //
@@ -139,10 +145,12 @@ Template._loginButtonsMessagesDialog.events({
   }
 });
 
-Template._loginButtonsMessagesDialog.visible = function () {
-  var hasMessage = loginButtonsSession.get('infoMessage') || loginButtonsSession.get('errorMessage');
-  return !dropdown() && hasMessage;
-};
+Template._loginButtonsMessagesDialog.helpers({
+  visible: function () {
+    var hasMessage = loginButtonsSession.get('infoMessage') || loginButtonsSession.get('errorMessage');
+    return !dropdown() && hasMessage;
+  }
+});
 
 
 //
@@ -221,22 +229,30 @@ var configurationFields = function () {
   return template.fields();
 };
 
-Template._configureLoginServiceDialog.configurationFields = function () {
-  return configurationFields();
-};
+Template._configureLoginServiceDialog.helpers({
+  configurationFields: function () {
+    return configurationFields();
+  }
+});
 
-Template._configureLoginServiceDialog.visible = function () {
-  return loginButtonsSession.get('configureLoginServiceDialogVisible');
-};
+Template._configureLoginServiceDialog.helpers({
+  visible: function () {
+    return loginButtonsSession.get('configureLoginServiceDialogVisible');
+  }
+});
 
-Template._configureLoginServiceDialog.configurationSteps = function () {
-  // renders the appropriate template
-  return configureLoginServiceDialogTemplateForService()();
-};
+Template._configureLoginServiceDialog.helpers({
+  configurationSteps: function () {
+    // renders the appropriate template
+    return configureLoginServiceDialogTemplateForService();
+  }
+});
 
-Template._configureLoginServiceDialog.saveDisabled = function () {
-  return loginButtonsSession.get('configureLoginServiceDialogSaveDisabled');
-};
+Template._configureLoginServiceDialog.helpers({
+  saveDisabled: function () {
+    return loginButtonsSession.get('configureLoginServiceDialogSaveDisabled');
+  }
+});
 
 
 // XXX from http://epeli.github.com/underscore.string/lib/underscore.string.js
