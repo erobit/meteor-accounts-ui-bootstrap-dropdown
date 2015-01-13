@@ -7,7 +7,7 @@ Template._loginButtons.events({
   'click input, click label, click button, click .dropdown-menu, click .alert': function(event) {
     event.stopPropagation();
   },
-  'click #login-name-link, click #login-sign-in-link': function () {
+  'click #login-name-link, click #login-sign-in-link': function (event) {
     event.stopPropagation();
     loginButtonsSession.set('dropdownVisible', true);
     Deps.flush();
